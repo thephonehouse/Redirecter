@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  redirecterapi:
+    image: ${DOCKER_REGISTRY-}redirecterapi
+    build:
+      context: .
+      dockerfile: RedirecterApi/Dockerfile
+    environment:
+      STORAGE_PROVIDER: json
+      JSON_PATH: "redirects.json"
