@@ -11,7 +11,7 @@ COPY ["RedirecterApi/RedirecterApi.csproj", "RedirecterApi/"]
 COPY ["RedirecterCore/RedirecterCore.csproj", "RedirecterCore/"]
 RUN dotnet restore "RedirecterApi/RedirecterApi.csproj"
 COPY . .
-WORKDIR "/src/Redirecter"
+WORKDIR "/src/RedirecterApi"
 RUN dotnet build "RedirecterApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
