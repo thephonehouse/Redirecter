@@ -7,7 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["Redirecter/Redirecter.csproj", "Redirecter/"]
+COPY ["RedirecterApi/RedirecterApi.csproj", "RedirecterApi/"]
+COPY ["RedirecterCore/RedirecterCore.csproj", "RedirecterCore/"]
 RUN dotnet restore "Redirecter/Redirecter.csproj"
 COPY . .
 WORKDIR "/src/Redirecter"

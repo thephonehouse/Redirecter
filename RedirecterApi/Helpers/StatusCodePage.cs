@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Drawing;
 using System.Reflection;
 
 namespace RedirecterApi.Helpers
@@ -11,7 +12,42 @@ namespace RedirecterApi.Helpers
             <head
                 <meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge" /><meta name="viewport" content="width=device-width, initial-scale=1" />
                 <title>{title}</title>
-                <style></style>    
+            """
+            +
+            """
+            <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f0f0f0;
+                margin: 0;
+                padding: 0;
+            }
+
+            .header {
+                background-color: #1877f2; /* Facebook blue color */
+                color: #fff;
+                text-align: center;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 36px;
+                font-weight: bold;
+                font-family: 'Helvetica', sans-serif; /* Adjust font as needed */
+            }
+
+            p {
+                font-size: 18px;
+                font-family: 'Helvetica', sans-serif; /* Adjust font as needed */
+            }
+
+            .message {
+                font-style: italic;
+            }
+            </style>
+            """
+            +  
+            $"""
             </head>
             <body>
                 <div class="header">
@@ -22,6 +58,17 @@ namespace RedirecterApi.Helpers
             </body>
             </html>
             """;
+
+        public static ContentResult BadRequest400()
+        {
+            const int statusCode = 400;
+            return new ContentResult
+            {
+                Content = BasePage("Bad Request", "The made request was invalid.", statusCode),
+                ContentType = "text/html",
+                StatusCode = statusCode
+            };
+        }
 
         public static ContentResult NotFound404()
         {

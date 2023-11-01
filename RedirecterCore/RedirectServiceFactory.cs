@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using RedirecterCore;
+using System.Runtime.InteropServices;
 
 namespace Redirecter
 {
@@ -16,29 +17,20 @@ namespace Redirecter
 
         }
 
-        private IDictionary<int, RedirectModel> CreateDictonary(List<RedirectModel> list)
-        {
-            IDictionary<int, RedirectModel> dictionary = new Dictionary<int, RedirectModel>();
-
-            list.ForEach(x => dictionary.Add(x.Id, x));
-
-            return dictionary;
-        }
-
-        public IDictionary<int, RedirectModel> Create()
+        public IRedirectService Create()
         {
             var list = new List<RedirectModel>();
 
-            return CreateDictonary(list);
+            return new RedirectService(list);
         }
 
-        public IDictionary<int, RedirectModel> CreateExamples()
+        public IRedirectService CreateExamples()
         {
-            return CreateDictonary(new List<RedirectModel>
+            return new RedirectService(new List<RedirectModel>
             {
-                new RedirectModel(1, "https://google.com"),
-                new RedirectModel(2, "https://example.org")
-            });            
+                new RedirectModel("https://google.com", "google"),
+                new RedirectModel("https://example.org", "example")
+            });
         }
     }
 }

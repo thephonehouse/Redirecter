@@ -8,28 +8,28 @@ namespace Redirecter
         /// Primary Id of the Redirect URL
         /// </summary>
         [Required]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         /// <summary>
         /// The URL that should be redirected
         /// </summary>
         [Required]
-        public string Url { get; set; } = string.Empty;
+        public string Url { get; set; }
 
         /// <summary>
         /// Optional comment
         /// </summary>
-        public string Comment { get; set; } = string.Empty;
+        public string Name { get; set; }
 
-        public RedirectModel()
+        public RedirectModel() : this(string.Empty, string.Empty)
         {
 
         }
 
-        public RedirectModel(int id, string url)
+        public RedirectModel(string url, string name)
         {
-            this.Id = id;
             this.Url = url;
+            this.Name = name;   
         }
     }
 }

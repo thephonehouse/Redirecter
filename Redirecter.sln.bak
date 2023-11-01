@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33403.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedirecterApi", "RedirecterApi\RedirecterApi.csproj", "{A8C72DA3-AAF2-4E2E-9E8F-23D26F3A1809}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RedirecterApi", "Redirecter\RedirecterApi.csproj", "{A8C72DA3-AAF2-4E2E-9E8F-23D26F3A1809}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RedirecterCore", "RedirecterCore\RedirecterCore.csproj", "{EAFAAE16-29B7-428A-9DEC-957CE70E425A}"
 EndProject
