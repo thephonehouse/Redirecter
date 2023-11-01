@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RedirecterApi.Helpers;
 using RedirecterCore;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace Redirecter.Controllers
 {
@@ -33,9 +34,7 @@ namespace Redirecter.Controllers
                     return StatusCodePage.NotFound404();
                 }
 
-                Response.Redirect(model.Url);
-
-                return StatusCodePage.TemporaryRedirect302(model.Url);
+                return Redirect(model.Url);
             } 
             catch(Exception ex)
             {
@@ -66,9 +65,7 @@ namespace Redirecter.Controllers
                     return StatusCodePage.NotFound404();
                 }
 
-                Response.Redirect(model.Url);
-
-                return StatusCodePage.TemporaryRedirect302(model.Url);
+                return Redirect(model.Url);
             }
             catch (Exception ex)
             {
