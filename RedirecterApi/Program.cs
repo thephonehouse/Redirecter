@@ -28,7 +28,7 @@ namespace Redirecter
                 builder.Services.AddLogging(x => x.AddSerilog(logger));
 
                 builder.Services.AddSingleton(x =>
-                 new RedirectServiceFactory("/test").CreateExampleService());
+                 new RedirectServiceFactory().CreateExampleService());
 
                 // Add services to the container.
 
