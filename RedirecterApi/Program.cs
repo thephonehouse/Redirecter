@@ -1,4 +1,6 @@
 
+using RedirecterCore;
+using RedirecterCore.StorageProviders;
 using Serilog;
 
 namespace Redirecter
@@ -8,12 +10,8 @@ namespace Redirecter
         public static void Main(string[] args)
         {
             var logger = new Serilog.LoggerConfiguration()
-#if DEBUG
-                .MinimumLevel.Debug()
-                .WriteTo.Console()
-#else
                 .MinimumLevel.Information()
-#endif
+                .WriteTo.Console()
                 .WriteTo.File(path: "/var/log/redirect.log", rollingInterval: RollingInterval.Day, retainedFileCountLimit: 14)
                 .CreateLogger();
 
@@ -27,8 +25,19 @@ namespace Redirecter
                 builder.Host.UseSerilog(logger);
                 builder.Services.AddLogging(x => x.AddSerilog(logger));
 
+
                 builder.Services.AddSingleton(x =>
-                 new RedirectServiceFactory().CreateExampleService());
+                {
+                    return new RedirectServiceFactory()
+                    .SetRedirectServiceProvider(Environment.GetEnvironmentVariable("STORAGE_PROVIDER") switch
+                    {
+                        "json" => new RedirectStorageProviderJson("redirect.json"),
+                        "db" => throw new NotImplementedException(),
+                        _ => new RedirectStorageProviderExample()
+                    })
+                    .CreateService();
+                });
+
 
                 // Add services to the container.
 
