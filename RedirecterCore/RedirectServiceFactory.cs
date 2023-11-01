@@ -5,11 +5,10 @@ namespace Redirecter
 {
     public class RedirectServiceFactory
     {
-        private string path;
+        private string path = string.Empty;
 
-        public RedirectServiceFactory(string path)
-        {
-            this.path = path;
+        public RedirectServiceFactory()
+        { 
         }
 
         private void Parse()
@@ -24,7 +23,7 @@ namespace Redirecter
             return new RedirectService(list);
         }
 
-        public IRedirectService CreateExamples()
+        public IRedirectService CreateExampleService()
         {
             return new RedirectService(new List<RedirectModel>
             {
