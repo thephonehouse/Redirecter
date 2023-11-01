@@ -19,6 +19,7 @@ namespace Redirecter
         /// <summary>
         /// Optional comment
         /// </summary>
+        [Required]
         public string Name { get; set; }
 
         public RedirectModel() : this(string.Empty, string.Empty)
