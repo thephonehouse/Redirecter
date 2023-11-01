@@ -27,8 +27,8 @@ namespace Redirecter
         {
             return new RedirectService(new List<RedirectModel>
             {
-                new RedirectModel("https://google.com", "google"),
-                new RedirectModel("https://example.org", "example")
+                new RedirectModel("https://google.com", "google") {Id = Guid.Parse("00000000-0000-0000-0000-000000000000")},
+                new RedirectModel("https://example.org", "example") {Id = Guid.Parse("00000000-0000-0000-0000-000000000001")}
             });
         }
     }
