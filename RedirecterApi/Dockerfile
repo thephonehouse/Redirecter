@@ -9,15 +9,15 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["RedirecterApi/RedirecterApi.csproj", "RedirecterApi/"]
 COPY ["RedirecterCore/RedirecterCore.csproj", "RedirecterCore/"]
-RUN dotnet restore "Redirecter/Redirecter.csproj"
+RUN dotnet restore "RedirecterApi/RedirecterApi.csproj"
 COPY . .
 WORKDIR "/src/Redirecter"
-RUN dotnet build "Redirecter.csproj" -c Release -o /app/build
+RUN dotnet build "RedirecterApi.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Redirecter.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "RedirecterApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Redirecter.dll"]
+ENTRYPOINT ["dotnet", "RedirecterApi.dll"]
