@@ -5,30 +5,25 @@ namespace Redirecter
 {
     public class RedirectService : IRedirectService
     {
-        public IEnumerable<RedirectModel> Models { get => models; }
+        public IEnumerable<RedirectModel> Models { get => serviceProvider.Models; }
 
-        internal RedirectModel[] models;
+        internal IRedirectStorageProvider serviceProvider;
 
-        internal RedirectService()
+        internal RedirectService(IRedirectStorageProvider serviceProvider)
         {
-            models = Array.Empty<RedirectModel>();
-        }
-
-        internal RedirectService(IEnumerable<RedirectModel>models)
-        {
-            this.models = models.ToArray();
+            this.serviceProvider = serviceProvider;
         }
 
         public RedirectModel? GetById(Guid id)
         {
-            return models.FirstOrDefault(x => x.Id == id);
+            return serviceProvider.GetById(id);
         }
 
         public RedirectModel? GetByName(string name)
         {
-            string name2Lower = name.ToLower();
-
-            return models.FirstOrDefault(x => x.Name == name2Lower);
+            return serviceProvider.GetByName(name.ToLower());
         }
+
+         
     }
 }
