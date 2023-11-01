@@ -12,7 +12,7 @@ namespace Redirecter
                 .MinimumLevel.Debug()
                 .WriteTo.Console()
 #else
-                .MinimumLevel.Information
+                .MinimumLevel.Information()
 #endif
                 .WriteTo.File(path: "/var/log/redirect.log", rollingInterval: RollingInterval.Day, retainedFileCountLimit: 14)
                 .CreateLogger();
