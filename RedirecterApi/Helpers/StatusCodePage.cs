@@ -75,7 +75,7 @@ namespace RedirecterApi.Helpers
             const int statusCode = 404;
             return new ContentResult
             {
-                Content = BasePage("Resource not found", "We are sorry, but the requested resource could not be found", statusCode),
+                Content = BasePage("Resource not found", "We are sorry, but the requested resource could not be found.", statusCode),
                 ContentType = "text/html",
                 StatusCode = statusCode
             };
@@ -97,7 +97,7 @@ namespace RedirecterApi.Helpers
             const int statusCode = 302;
             return new ContentResult
             {
-                Content = BasePage("Temporary redirect", $"If you were not redirected please click here <a href=\"{redirectUrl}\">{redirectUrl}</a>", statusCode),
+                Content = BasePage("Temporary redirect", $"If you were not redirected please click here <a href=\"{redirectUrl}\">{redirectUrl}</a>.", statusCode),
                 ContentType = "text/html",
                 StatusCode = statusCode
             };
