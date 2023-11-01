@@ -51,7 +51,7 @@ namespace Redirecter.Controllers
         {
             try
             {
-                if (NameRegex().IsMatch(name) is false)
+                if (string.IsNullOrWhiteSpace(name) || NameRegex().IsMatch(name) is false)
                 {
                     _logger.LogWarning("Someone searched for an invalid name: {name}", name);
                     return StatusCodePage.BadRequest400();
