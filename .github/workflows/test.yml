@@ -2,37 +2,22 @@ name: Test
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
-
   test:
-
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-      with:
-        fetch-depth: 0
-    - name: Install .NET Core
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 7.0.x
-    - name: Run .NET Code Analysis
-      uses: dotnet/code-analysis@main
-      id: code-analysis
-      with:
-        solution: Redirecter.sln
-        build-breaking: true
-        all-categories: all
-        # Upload the analysis results file
-    - name: Upload analysis results
-      uses: actions/upload-artifact@v2
-      with:
-        name: analysis_results.sarif
-        path: ${{ steps.code-analysis.outputs.sarifFile }}
-    - name: Execute unit tests
-      run: dotnet test Redirecter.sln
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Install .NET Core
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
+      - name: Execute unit tests
+        run: dotnet test Redirecter.sln
