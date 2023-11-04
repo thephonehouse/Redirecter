@@ -20,7 +20,7 @@ namespace Redirecter
         {
             var model = serviceProvider.GetById(id);
 
-            if (model is not null && CheckValidity(model) is 0) model = null;
+            if (model is not null && CheckValidity(model) is not 0) model = null;
 
             return model;
         }
@@ -30,7 +30,7 @@ namespace Redirecter
         {
             var model = serviceProvider.GetByName(name.ToLower());
 
-            if (model is not null && CheckValidity(model) is 0) model = null;
+            if (model is not null && CheckValidity(model) is not 0) model = null;
 
             return model;
         }
