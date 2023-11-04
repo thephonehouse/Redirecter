@@ -33,7 +33,7 @@ namespace Redirecter
                     {
                         "json" => new RedirectStorageProviderJson("redirect.json"),
                         "db" => throw new NotImplementedException(),
-                        _ => new RedirectStorageProviderExample()
+                        _ => RedirectStorageProviderExample.Instance
                     })
                     .CreateService();
                 });
