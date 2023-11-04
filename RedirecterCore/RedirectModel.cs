@@ -43,7 +43,7 @@ namespace Redirecter
             this.Name = name;   
         }
 
-        public RedirectModel(string url, string name, DateTimeOffset? validUntil, DateTimeOffset? notValidBefore) 
+        public RedirectModel(string url, string name, DateTimeOffset? validUntil = null, DateTimeOffset? notValidBefore = null) 
         { 
         
             Url = url;
