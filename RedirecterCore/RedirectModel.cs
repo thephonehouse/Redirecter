@@ -40,7 +40,9 @@ namespace Redirecter
         public RedirectModel(string url, string name)
         {
             this.Url = url;
-            this.Name = name;   
+            this.Name = name;
+            ValidUntil = DateTimeOffset.MaxValue;
+            NotValidBefore = DateTimeOffset.MinValue;
         }
 
         public RedirectModel(string url, string name, DateTimeOffset? validUntil = null, DateTimeOffset? notValidBefore = null) 
