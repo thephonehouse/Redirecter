@@ -7,6 +7,8 @@ namespace Redirecter
     {
         public IEnumerable<RedirectModel> Models { get => serviceProvider.Models; }
 
+        public IRedirectStorageProvider ServiceProvider { get => serviceProvider; }
+
         internal IRedirectStorageProvider serviceProvider;
 
         /// <inheritdoc/>
