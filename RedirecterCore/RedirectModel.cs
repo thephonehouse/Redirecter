@@ -22,6 +22,16 @@ namespace Redirecter
         [Required]
         public string Name { get; set; }
 
+        /// <summary>
+        /// This model is valid until this date
+        /// </summary>
+        public DateTimeOffset ValidUntil { get; set; }
+
+        /// <summary>
+        /// This model is not valid before date
+        /// </summary>
+        public DateTimeOffset NotValidBefore { get; set; }
+
         public RedirectModel() : this(string.Empty, string.Empty)
         {
 
@@ -31,6 +41,15 @@ namespace Redirecter
         {
             this.Url = url;
             this.Name = name;   
+        }
+
+        public RedirectModel(string url, string name, DateTimeOffset? validUntil, DateTimeOffset? notValidBefore) 
+        { 
+        
+            Url = url;
+            Name = name;
+            ValidUntil = (DateTimeOffset)(validUntil is not null ? validUntil : DateTimeOffset.MaxValue);
+            NotValidBefore = (DateTimeOffset)(notValidBefore is not null ? notValidBefore : DateTimeOffset.MinValue);
         }
     }
 }
