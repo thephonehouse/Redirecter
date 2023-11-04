@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RedirecterCore
 {
-    internal class RedirectServiceFactoryException : Exception
+    public class RedirectServiceFactoryException : Exception
     {
         public RedirectServiceFactoryException(string? message) : base(message)
         {
